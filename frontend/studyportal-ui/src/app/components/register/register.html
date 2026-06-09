@@ -1,0 +1,67 @@
+<div class="register-page">
+
+  <div class="register-card">
+
+    <div class="logo-section">
+      <div class="logo">SP</div>
+      <h1>Study Portal</h1>
+      <p>Create Your Account</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <!-- Username -->
+      <div class="input-group">
+        <label>Username</label>
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Enter username">
+      </div>
+
+      <!-- Email -->
+      <div class="input-group">
+        <label>Email</label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Enter email">
+      </div>
+
+      <!-- Password -->
+      <div class="input-group">
+        <label>Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Enter password">
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="input-group">
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Confirm password">
+      </div>
+
+      <!-- Register Button -->
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid">
+        Register
+      </button>
+
+    </form>
+
+    <div class="footer-links">
+      <p>
+        Already have an account?
+        <a routerLink="/login">Login</a>
+      </p>
+    </div>
+
+  </div>
+
+</div>
