@@ -1,7 +1,29 @@
-<div class="subjects-page">
+<div class="subjects-container">
 
-  <h1>Subjects</h1>
+  <h1>
+    Semester {{ semesterNumber }} Subjects
+  </h1>
 
-  <p>Selected Semester Subjects will appear here.</p>
+  <p class="count">
+    Total Subjects: {{ subjects.length }}
+  </p>
+
+  <div
+    class="subject-card"
+    *ngFor="let subject of subjects">
+
+    <h3>
+      {{ subject.subjectCode }}
+    </h3>
+
+    <p>
+      {{ subject.subjectName }}
+    </p>
+
+    <button class="start-btn">
+      Start Learning
+    </button>
+
+  </div>
 
 </div>

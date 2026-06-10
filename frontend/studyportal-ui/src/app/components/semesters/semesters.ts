@@ -14,9 +14,14 @@ export class Semesters {
 
   openSemester(semester: number) {
 
-    this.router.navigate(['/subjects'], {
-      queryParams: { semester: semester }
-    });
+    this.router.navigate(
+      ['/subjects'],
+      {
+        queryParams: {
+          semester: semester
+        }
+      }
+    );
 
   }
 

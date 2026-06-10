@@ -1,24 +1,35 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [ReactiveFormsModule,RouterLink],
+  standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css',
+  styleUrl: './dashboard.css'
 })
 export class Dashboard {
-  constructor(private router:Router){
-    
+
+  username = 'Alen';
+
+  stats = [
+    { title: 'Semesters', value: 8 },
+    { title: 'Subjects', value: 48 },
+    { title: 'Completed', value: '60%' }
+  ];
+
+  recentSubjects = [
+    'Data Structures',
+    'Digital Electronics',
+    'Power Systems',
+    'Signals & Systems'
+  ];
+
+  constructor(private router: Router) {}
+
+  logout() {
+    localStorage.removeItem('rememberedUser');
+    this.router.navigate(['/']);
   }
-
-logout() {
-
-  localStorage.removeItem('rememberedUser');
-
-  this.router.navigate(['/']);
-
-}
-
 }
