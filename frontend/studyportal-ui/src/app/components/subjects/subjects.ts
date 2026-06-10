@@ -1,0 +1,12 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-subjects',
+  standalone: true,
+  imports: [],
+  templateUrl: './subjects.html',
+  styleUrl: './subjects.css'
+})
+export class Subjects {
+
+}
