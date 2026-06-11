@@ -24,21 +24,29 @@ export class Subjects implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.queryParams.subscribe(params => {
+  this.route.queryParams.subscribe(params => {
 
-      this.semesterNumber =
-        Number(params['semester']);
+    const semester =
+      params['semester'] ??
+      localStorage.getItem('selectedSemester');
 
-      console.log(
-        'Selected Semester:',
-        this.semesterNumber
-      );
+    if (!semester) {
+      console.error('Semester not found');
+      return;
+    }
 
-      this.loadSubjects();
+    this.semesterNumber = Number(semester);
 
-    });
+    console.log(
+      'Selected Semester:',
+      this.semesterNumber
+    );
 
-  }
+    this.loadSubjects();
+
+  });
+
+}
 
   loadSubjects(): void {
 

@@ -1,14 +1,32 @@
+<div class="video-container">
+  <video
+    #bgVideo
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto">
+    <source src="/btech-bg.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="overlay"></div>
+
 <div class="login-page">
 
   <div class="login-card">
 
     <div class="logo-section">
+
       <div class="logo">BX</div>
+
       <h1>BacklogX</h1>
+
       <p>A B.Tech Learning Platform</p>
+
     </div>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm"
+          (ngSubmit)="onSubmit()">
 
       <!-- Username -->
 
@@ -22,11 +40,11 @@
           placeholder="Enter username">
 
         @if(loginForm.get('username')?.touched &&
-        loginForm.get('username')?.invalid){
+            loginForm.get('username')?.invalid){
 
-        <small class="error">
-          Username is required
-        </small>
+          <small class="error">
+            Username is required
+          </small>
 
         }
 
@@ -44,43 +62,47 @@
           placeholder="Enter password">
 
         @if(loginForm.get('password')?.touched &&
-        loginForm.get('password')?.hasError('required')){
+            loginForm.get('password')?.hasError('required')){
 
-        <small class="error">
-          Password is required
-        </small>
+          <small class="error">
+            Password is required
+          </small>
 
         }
 
         @if(loginForm.get('password')?.touched &&
-        loginForm.get('password')?.hasError('minlength')){
+            loginForm.get('password')?.hasError('minlength')){
 
-        <small class="error">
-          Password must contain at least 6 characters
-        </small>
+          <small class="error">
+            Password must contain at least 6 characters
+          </small>
 
         }
 
       </div>
 
-      <!-- Remember Me & Forgot Password -->
+      <!-- Remember Me -->
 
       <div class="options">
 
         <label class="remember-me">
 
           <input
-  type="checkbox"
-  formControlName="rememberMe"
-  (change)="rememberUser()">
+            type="checkbox"
+            formControlName="rememberMe"
+            (change)="rememberUser()">
 
           Remember Me
 
         </label>
 
-        <a routerLink="/forgot-password">Forgot Password?</a>
+        <a routerLink="/forgot-password">
+          Forgot Password?
+        </a>
 
       </div>
+
+      <!-- Login -->
 
       <button
         type="submit"
@@ -90,11 +112,15 @@
 
       </button>
 
+      <!-- Register -->
+
       <div class="register-section">
 
         <span>New User?</span>
 
-        <a routerLink="/register">Register Here</a>
+        <a routerLink="/register">
+          Register Here
+        </a>
 
       </div>
 

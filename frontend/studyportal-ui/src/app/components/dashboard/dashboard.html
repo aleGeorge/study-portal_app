@@ -1,79 +1,99 @@
 <div class="dashboard-container">
 
+ 
   <div class="header">
-    <h1>Welcome, {{username}} 👋</h1>
+
+    <div>
+      <h1>Welcome {{ dashboardData?.studentName }} 👋</h1>
+      <p>Your learning journey at a glance</p>
+    </div>
 
     <button class="logout-btn" (click)="logout()">
       Logout
     </button>
+
   </div>
 
   <div class="stats-grid">
-    <div class="stat-card" *ngFor="let stat of stats">
-      <h2>{{stat.value}}</h2>
-      <p>{{stat.title}}</p>
+
+    <div class="stat-card">
+      <h2>{{ dashboardData?.totalSemesters }}</h2>
+      <span>Total Semesters</span>
     </div>
+
+    <div class="stat-card">
+      <h2>{{ dashboardData?.totalSubjects }}</h2>
+      <span>Total Subjects</span>
+    </div>
+
+    <div class="stat-card">
+      <h2>{{ dashboardData?.totalBacklogs }}</h2>
+      <span>Total Backlogs</span>
+    </div>
+
+    <div class="stat-card">
+      <h2>{{ dashboardData?.clearedBacklogs }}</h2>
+      <span>Cleared Backlogs</span>
+    </div>
+
   </div>
 
-  <div class="main-grid">
+ 
+  <div class="dashboard-grid">
 
     <div class="card">
-      <h3>📚 Recent Subjects</h3>
 
-      <ul>
-        <li *ngFor="let subject of recentSubjects">
-          {{subject}}
-        </li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>🎯 Study Progress</h3>
+      <h3>📈 Progress Overview</h3>
 
       <div class="progress-bar">
-        <div class="progress-fill"></div>
+        <div
+          class="progress-fill"
+          [style.width.%]="progressPercentage">
+        </div>
       </div>
 
-      <p>60% Completed</p>
+      <p>
+        {{ dashboardData?.clearedBacklogs }}
+        out of
+        {{ dashboardData?.totalBacklogs }}
+        backlogs cleared
+      </p>
+
     </div>
 
     <div class="card">
-      <h3>📝 Upcoming Exams</h3>
 
-      <ul>
-        <li>Power Electronics - 15 June</li>
-        <li>Control Systems - 18 June</li>
-        <li>Microprocessors - 22 June</li>
-      </ul>
+      <h3>⚡ Quick Actions</h3>
+
+      <div class="actions">
+
+        <a routerLink="/semesters" class="action-btn">
+          Browse Semesters
+        </a>
+
+        <a routerLink="/subjects" class="action-btn">
+          Browse Subjects
+        </a>
+
+        <a routerLink="/videos" class="action-btn">
+          Video Lectures
+        </a>
+
+      </div>
+
     </div>
 
   </div>
 
-  <div class="quick-actions">
-
-    <a routerLink="/semesters" class="action-card">
-      📖 Browse Semesters
-    </a>
-
-    <a routerLink="/subjects" class="action-card">
-      📚 Subjects
-    </a>
-
-    <a routerLink="/notes" class="action-card">
-      📄 Notes
-    </a>
-
-    <a routerLink="/question-papers" class="action-card">
-      📝 Previous Papers
-    </a>
-
-  </div>
-
+  
   <div class="quote-card">
+
     <h3>💡 Daily Motivation</h3>
+
     <p>
-      Success is the sum of small efforts repeated day in and day out.
+      Small progress every day adds up to big success.
     </p>
+
   </div>
 
 </div>

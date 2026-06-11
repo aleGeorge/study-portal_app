@@ -1,35 +1,64 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { DashboardService } from '../../services/DashboardService.service';
+import { DashboardData } from '../../models/dashboard-data';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css'
+  templateUrl: './Dashboard.html',
+  styleUrls: ['./Dashboard.css']
 })
-export class Dashboard {
+export class Dashboard implements OnInit {
 
-  username = 'Alen';
+// dashboardData: any = {};
+dashboardData = {
+  studentName: '',
+  totalSemesters: 0,
+  totalSubjects: 0,
+  totalBacklogs: 0,
+  clearedBacklogs: 0
+};
 
-  stats = [
-    { title: 'Semesters', value: 8 },
-    { title: 'Subjects', value: 48 },
-    { title: 'Completed', value: '60%' }
-  ];
+  progressPercentage = 0;
 
-  recentSubjects = [
-    'Data Structures',
-    'Digital Electronics',
-    'Power Systems',
-    'Signals & Systems'
-  ];
+  constructor(
+    private dashboardService: DashboardService,
+    private router: Router
+  ) {}
 
-  constructor(private router: Router) {}
+  ngOnInit(): void {
 
-  logout() {
+    // this.dashboardService.getDashboard()
+    this.dashboardService.getDashboard()
+      .subscribe({
+
+        next: (response) => {
+
+          console.log('Dashboard Response:', response);
+
+          this.dashboardData = response;
+
+          this.progressPercentage =
+            response.totalBacklogs > 0
+              ? (response.clearedBacklogs / response.totalBacklogs) * 100
+              : 0;
+
+        },
+
+        error: (error) => {
+          console.error(error);
+        }
+
+      });
+
+  }
+
+  logout(): void {
     localStorage.removeItem('rememberedUser');
     this.router.navigate(['/']);
   }
+
 }
