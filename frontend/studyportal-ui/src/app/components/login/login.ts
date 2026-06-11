@@ -25,15 +25,21 @@ export class Login {
 
   }
 
-  onSubmit() {
+onSubmit() {
 
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-    }
-    
-  this.router.navigate(['/dashboard']);
+  if (this.loginForm.valid) {
+const username =
+  this.loginForm.get('username')?.value ?? '';
 
+localStorage.setItem(
+  'rememberedUser',
+  username
+);
+
+    this.router.navigate(['/dashboard']);
   }
+
+}
   loadRememberedUser(){
     const savedUser = localStorage.getItem('rememberedUser');
     if(savedUser){

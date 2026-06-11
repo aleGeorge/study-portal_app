@@ -1,105 +1,98 @@
 <div class="dashboard-container">
 
+ 
+  <div class="header">
 
-  <div class="sidebar">
-
-    <div class="logo">
-      <h2>📚 Study Portal</h2>
+    <div>
+      <h1>Welcome {{ dashboardData?.studentName }} 👋</h1>
+      <p>Your learning journey at a glance</p>
     </div>
 
-    <ul class="menu">
-     <li routerLink="/dashboard">🏠 Dashboard</li>
-
-<li routerLink="/semesters">
-    📖 Semesters
-</li>
-
-<li routerLink="/subjects">
-    📚 Subjects
-</li>
-
-<li routerLink="/notes">
-    📝 Notes
-</li>
-
-<li routerLink="/videos">
-    🎥 Videos
-</li>
-
-<li routerLink="/profile">
-    👤 Profile
-</li>
-<li class="logout" (click)="logout()">
-    🚪 Logout
-</li>
-    </ul>
+    <button class="logout-btn" (click)="logout()">
+      Logout
+    </button>
 
   </div>
 
+  <div class="stats-grid">
 
-  <div class="main-content">
-
-    <div class="topbar">
-      <h2>Welcome Back, Alen 👋</h2>
+    <div class="stat-card">
+      <h2>{{ dashboardData?.totalSemesters }}</h2>
+      <span>Total Semesters</span>
     </div>
 
-    <div class="stats">
+    <div class="stat-card">
+      <h2>{{ dashboardData?.totalSubjects }}</h2>
+      <span>Total Subjects</span>
+    </div>
 
-      <div class="stat-card">
-        <h3>Subjects</h3>
-        <p>12</p>
+    <div class="stat-card">
+      <h2>{{ dashboardData?.totalBacklogs }}</h2>
+      <span>Total Backlogs</span>
+    </div>
+
+    <div class="stat-card">
+      <h2>{{ dashboardData?.clearedBacklogs }}</h2>
+      <span>Cleared Backlogs</span>
+    </div>
+
+  </div>
+
+ 
+  <div class="dashboard-grid">
+
+    <div class="card">
+
+      <h3>📈 Progress Overview</h3>
+
+      <div class="progress-bar">
+        <div
+          class="progress-fill"
+          [style.width.%]="progressPercentage">
+        </div>
       </div>
 
-      <div class="stat-card">
-        <h3>Notes</h3>
-        <p>86</p>
-      </div>
+      <p>
+        {{ dashboardData?.clearedBacklogs }}
+        out of
+        {{ dashboardData?.totalBacklogs }}
+        backlogs cleared
+      </p>
 
-      <div class="stat-card">
-        <h3>Videos</h3>
-        <p>124</p>
-      </div>
+    </div>
 
-      <div class="stat-card">
-        <h3>Mock Tests</h3>
-        <p>18</p>
+    <div class="card">
+
+      <h3>⚡ Quick Actions</h3>
+
+      <div class="actions">
+
+        <a routerLink="/semesters" class="action-btn">
+          Browse Semesters
+        </a>
+
+        <a routerLink="/subjects" class="action-btn">
+          Browse Subjects
+        </a>
+
+        <a routerLink="/videos" class="action-btn">
+          Video Lectures
+        </a>
+
       </div>
 
     </div>
 
-    <div class="content-grid">
+  </div>
 
-      <div class="card">
-        <h3>Recent Activity</h3>
+  
+  <div class="quote-card">
 
-        <div class="item">
-          Java Full Stack - 80%
-        </div>
+    <h3>💡 Daily Motivation</h3>
 
-        <div class="item">
-          DBMS - 65%
-        </div>
-
-        <div class="item">
-          Operating Systems - 40%
-        </div>
-
-      </div>
-
-      <div class="card">
-        <h3>Upcoming Exams</h3>
-
-        <div class="item">
-          DBMS Internal - 15 June
-        </div>
-
-        <div class="item">
-          Java Lab Exam - 20 June
-        </div>
-
-      </div>
-
-    </div>
+    <p>
+      Small progress every day adds up to big success.
+    </p>
 
   </div>
 

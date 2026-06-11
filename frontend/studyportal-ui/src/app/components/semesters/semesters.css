@@ -7,7 +7,7 @@
 
 .semester-page{
     min-height:100vh;
-    background:#f1f5f9;
+    background:#f8fafc;
     padding:40px;
 }
 
@@ -17,36 +17,45 @@
 }
 
 .header h1{
+    font-size:38px;
     color:#1e293b;
     margin-bottom:10px;
 }
 
 .header p{
     color:#64748b;
+    font-size:16px;
 }
 
 .semester-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
+    max-width:1200px;
+    margin:auto;
 }
 
 .semester-card{
     background:white;
     border-radius:20px;
-    height:160px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    padding:30px;
+    text-align:center;
     cursor:pointer;
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
     transition:all 0.3s ease;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
 .semester-card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-10px);
     background:#2563eb;
     color:white;
+    box-shadow:0 15px 30px rgba(37,99,235,0.3);
+}
+
+.icon{
+    font-size:50px;
+    display:block;
+    margin-bottom:15px;
 }
 
 .semester-card h2{

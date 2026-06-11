@@ -1,11 +1,11 @@
 package com.bunkless.studyportal.service;
 
-import com.bunkless.studyportal.entity.Subject;
-import com.bunkless.studyportal.repository.SemesterRepository;
-import com.bunkless.studyportal.repository.SubjectRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.bunkless.studyportal.entity.Subject;
+import com.bunkless.studyportal.repository.SubjectRepository;
 
 @Service
 public class SubjectService {
@@ -31,4 +31,10 @@ public class SubjectService {
     public Subject getSubjectById(Long id){
         return subjectRepository.findById(id).orElseThrow(()->new RuntimeException("Subject not found with id"+ id));
     }
+    public List<Subject> getSubjectsBySemester(Integer semesterNo){
+
+    return subjectRepository
+            .findBySemesterSemesterNo(semesterNo);
+
+}
 }

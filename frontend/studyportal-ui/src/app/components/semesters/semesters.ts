@@ -14,10 +14,20 @@ export class Semesters {
 
   openSemester(semester: number) {
 
-    this.router.navigate(['/subjects'], {
-      queryParams: { semester: semester }
-    });
+  localStorage.setItem(
+    'selectedSemester',
+    semester.toString()
+  );
 
-  }
+  this.router.navigate(
+    ['/subjects'],
+    {
+      queryParams: {
+        semester: semester
+      }
+    }
+  );
+
+}
 
 }

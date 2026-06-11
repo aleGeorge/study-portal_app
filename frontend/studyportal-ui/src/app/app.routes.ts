@@ -3,42 +3,51 @@ import { Login } from './components/login/login';
 import { Register } from './components/register/register';
 import { ForgotPassword } from './components/forgot-password/forgot-password';
 import { ResetPassword } from './components/reset-password/reset-password';
-import { Dashboard } from './components/dashboard/dashboard';
+import { Dashboard } from './components/dashboard/Dashboard';
 import { Semesters } from './components/semesters/semesters';
 import { Subject } from 'rxjs';
 import { Videos } from './components/videos/videos';
 import { Notes } from './components/notes/notes';
 import { Profile } from './components/profile/profile';
 import { Subjects } from './components/subjects/subjects';
+import { authGuard } from './guards/auth-guard';
+// import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Login
+    component: Login,
+    
   },
   {
     path:'login',
-    component:Login
+    component:Login,
+  
   },
   {
     path: 'register',
-    component: Register
+    component: Register,
+   
   },
   {
     path:'forgot-password',
-    component:ForgotPassword
+    component:ForgotPassword,
+   
+
   },
   {
     path:'reset-password',
-    component:ResetPassword
+    component:ResetPassword,
+   
   },
   {
     path:'dashboard',
-    component:Dashboard
+    component:Dashboard,
+  
   },
-  {path:'semesters',component:Semesters},
-  {path:'subjects',component:Subjects},
-  {path:'videos',component:Videos},
-  {path:'notes',component:Notes},
-  {path:'profile',component:Profile}
+  {path:'semesters',component:Semesters,canActivate:[authGuard]},
+  {path:'subjects',component:Subjects,},
+  {path:'videos',component:Videos,},
+  {path:'notes',component:Notes,},
+  {path:'profile',component:Profile,}
 ];
